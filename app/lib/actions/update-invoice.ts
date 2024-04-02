@@ -12,13 +12,19 @@ export async function updateInvoice (id: string, formData: FormData) {
   const { customerId, status, amount } = UpdateInvoice.parse(fields)
 
   const amountInCents = amount * 100
-
-  await sql`
-    UPDATE invoices
-    SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-    WHERE id = ${id}
-  `
-  revalidatePath('/dashboard/invoices')
+  try {
+    await sql`
+      UPDATE invoices
+      SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
+      WHERE id = ${id}
+    `
+    revalidatePath('/dashboard/invoices')
+    return { message: 'Deleted Invoice.' }
+  } catch (error) {
+    return {
+      message: 'Database Error: Failed to Delete Invoice.'
+    }
+  }
   redirect('/dashboard/invoices')
 }
 

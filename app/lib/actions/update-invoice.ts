@@ -5,11 +5,29 @@ import { FormSchema } from '../schemas'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
+type State = {
+  errors?: {
+    customerId?: string[]
+    amount?: string[]
+    status?: string[]
+  }
+  message?: string | null
+}
+
 const UpdateInvoice = FormSchema.omit({ id: true, date: true })
 
-export async function updateInvoice (id: string, formData: FormData) {
+export async function updateInvoice (id: string, prevState: State, formData: FormData) {
   const fields = Object.fromEntries(formData.entries())
-  const { customerId, status, amount } = UpdateInvoice.parse(fields)
+  const validateFields = UpdateInvoice.safeParse(fields)
+
+  if (!validateFields.success) {
+    return {
+      errors: validateFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Update Invoice.'
+    }
+  }
+
+  const { amount, customerId, status } = validateFields.data
 
   const amountInCents = amount * 100
   try {

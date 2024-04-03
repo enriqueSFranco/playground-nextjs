@@ -1,4 +1,4 @@
-export default function Customers () {
+export default function Pages () {
   return (
     <section>
       <h1 className="text-xl">Customers</h1>

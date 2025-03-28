@@ -27,13 +27,13 @@ export function Breadcrumbs({
       <ol
         className={clsx(
           lusitana.className,
-          'flex flex-wrap text-xl md:text-2xl',
+          'flex flex-wrap items-center justify-center text-xl md:text-2xl',
         )}
       >
         {breadcrumbs.map((breadcrumb, index) => {
           const isLast = isLastBreadcrumb(index)
           const isCurrentStep = currentStep === breadcrumb.href
-          console.log(currentStep === breadcrumb.href ? `⭐️${currentStep}-${breadcrumb.href}` : `❌${currentStep} - ${breadcrumb.href}`)
+
           return (
             <li
               key={breadcrumb.label}
@@ -41,9 +41,9 @@ export function Breadcrumbs({
               className="flex items-center text-sm"
             >
               {currentStep === breadcrumb.href ? (
-              <span className={`${isCurrentStep ? "text-white underline underline-offset-4 pointer-events-none" : null}`}>{breadcrumb.label}</span>
+              <span className={`capitalize ${isCurrentStep ? "text-white underline underline-offset-4 pointer-events-none" : null}`}>{breadcrumb.label}</span>
               ) : (
-                <button onClick={() => updateStepInURL(breadcrumb.href)} className='text-gray-400'>
+                <button onClick={() => updateStepInURL(breadcrumb.href)} className='text-gray-400 capitalize'>
                   {breadcrumb.label}
                 </button>
               )}

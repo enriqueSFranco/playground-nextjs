@@ -89,7 +89,7 @@ export const MyEditor = () => {
       <div className='dark:bg-white/10 rounded-lg p-4 gap-4 flex flex-col'>
         <Toolbar editor={editor} /> 
         <Editable
-        className='outline-none h-56 self-center w-full'
+        className='outline-none h-28 self-center w-full'
           renderElement={renderElement}
           renderLeaf={renderLeaf}
           placeholder='hello wolrd'

@@ -6,7 +6,7 @@ import IntelliceCVLogo from '@/ui/intelliceCV-logo';
 
 export default function Navbar() {
   return (
-    <header className="flex items-center justify-between px-6 py-3 h-20 shadow-sm text-black dark:bg-black dark:text-white dark:border-b-[1px] dark:border-b-white/20">
+    <header className="flex items-center justify-between px-6 py-3 h-20 shadow-sm text-black dark:bg-black dark:text-white">
       <Link href="/">
         <IntelliceCVLogo />
       </Link>

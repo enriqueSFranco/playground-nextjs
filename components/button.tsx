@@ -1,19 +1,36 @@
 import clsx from 'clsx';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
   children: React.ReactNode;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
 }
 
-export default function Button({ children, className, ...rest }: ButtonProps) {
+const Button: React.FC<ButtonProps> = ({ children, className, onClick, disabled }) => {
+  const baseClasses = "flex items-center justify-between gap-1 px-4 py-2 rounded-lg text-sm font-normal outline outline-[1px] transition-colors";
+  const defaultClasses = "bg-black text-white dark:bg-white dark:text-black";
+  const hoverClasses = "hover:bg-white/10 dark:hover:bg-slate-300";
+  const focusClasses = "focus-visible:outline focus-visible:outline-2";
+  const disabledClasses = "aria-disabled:cursor-not-allowed aria-disabled:opacity-50";
+
   return (
     <button
-      {...rest}
+      onClick={onClick}
       className={clsx(
-        'flex items-center justify-between gap-1 px-6 py-3 rounded-lg bg-black text-sm font-normal outline outline-[1px] dark:outline-white/20 text-white transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 aria-disabled:cursor-not-allowed aria-disabled:opacity-50',
-        className,
+        baseClasses,
+        defaultClasses,
+        hoverClasses,
+        focusClasses,
+        disabledClasses,
+        className,  // Añadimos clases personalizadas por props
+        disabled && "opacity-50 cursor-not-allowed"  // Si está deshabilitado, aplica clases adicionales
       )}
+      disabled={disabled}
     >
       {children}
     </button>
   );
-}
+};
+
+export default Button;

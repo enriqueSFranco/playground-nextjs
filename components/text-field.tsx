@@ -16,6 +16,7 @@ export function TextField({label, ...rest}: Props) {
       <input
         id={inputHintId}
         {...rest}
+        autoComplete='off'
         className="rounded-lg py-2 w-full h-12 outline outline-[1px] outline-gray-300 dark:bg-black dark:outline-white/20"
       />
     </label>

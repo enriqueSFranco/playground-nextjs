@@ -1,50 +1,35 @@
-import { useForm } from '@/hooks/useForm';
-import { WorkExperience } from '@/lib/schemas';
-import { EditorForm } from '@/lib/types';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import Button from '@/components/atoms/Button/Button';
 import { IconGrid } from '@/components/atoms/Icons/IconGrid';
 import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
-import { useEffect } from 'react';
+import { $editorStore } from '@/app/(main)/_shared-store/editor';
+import { EditorForms, WorkExperience } from '@/app/(main)/lib/types';
 
-type WorkExperienceEntryFormProps = {
-  id: string;
-  onRemove: (id: string) => void;
-} & EditorForm;
+type WorkExperienceFields = keyof EditorForms['workExperience'];
 
-export function WorkExperienceEntryForm({
-  id,
-  onRemove,
-  curriculumData,
-  setCurriculumData,
-}: WorkExperienceEntryFormProps) {
-  const { form, handleChange } = useForm<WorkExperience>({
-    jobTitle: curriculumData?.jobTitle || '',
-    company: curriculumData?.company || '',
-    startDate: curriculumData?.startDate || '',
-    endDate: curriculumData?.endDate || '',
-    workExperienceDescription: curriculumData.workExperienceDescription || '',
-  });
+interface Props {
+  form: WorkExperience;
+}
 
-  useEffect(() => {
-    if (
-      form.jobTitle !== curriculumData.jobTitle ||
-      form.company !== curriculumData.company ||
-      form.startDate !== curriculumData.startDate ||
-      form.endDate !== curriculumData.endDate ||
-      form.workExperienceDescription !==
-        curriculumData.workExperienceDescription
-    )
-      setCurriculumData({ ...curriculumData, ...[form] });
-  }, [form, curriculumData, setCurriculumData]);
+export function WorkExperienceEntryForm({ form }: Props) {
+  const { updateField, removeEntry } = $editorStore.actions;
+
+  const { id, jobTitle, company, startDate, endDate, description } = form;
+  console.log("id:",id)
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    updateField({form: 'workExperience', field: name as WorkExperienceFields, value, index: form.id});
+  }
+
+  function deleteForm() {
+    removeEntry('workExperience', form.id)
+  }
 
   return (
     <div className="borde-[1px] flex flex-col gap-4 rounded-sm border border-white/20 p-4">
       <header className="flex w-full flex-col gap-4">
         <div className="flex items-start justify-between">
-          <h2 className="font-bold">
-            Tu experiencia laboral {form.jobTitle} - {id}
-          </h2>
+          <h2 className="font-bold">Tu experiencia laboral {id}</h2>
           <IconGrid />
         </div>
         <div className="w-fit self-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-[0.5px]">
@@ -59,24 +44,30 @@ export function WorkExperienceEntryForm({
           placeholder="Frontend Developer"
           name="jobTitle"
           label="Nombre del puesto"
-          value={form.jobTitle}
+          value={jobTitle}
           onChange={handleChange}
         />
-        <CustomInput placeholder="Empresa XYZ" name="company" label="Empresa" />
+        <CustomInput
+          placeholder="Empresa XYZ"
+          name="company"
+          label="Empresa"
+          value={company}
+          onChange={handleChange}
+        />
         <div className="flex w-full flex-col gap-2">
           <div className="flex w-full items-center justify-between gap-8">
             <CustomInput
               type="date"
               name="startDate"
               label="Fecha de inicio"
-              value={form.startDate}
+              value={startDate}
               onChange={handleChange}
             />
             <CustomInput
               type="date"
               name="endDate"
               label="Fecha de finalización"
-              value={form.endDate}
+              value={endDate}
               onChange={handleChange}
             />
           </div>
@@ -88,7 +79,7 @@ export function WorkExperienceEntryForm({
         {/* <TextEditor /> */}
       </form>
       <Button
-        onClick={() => onRemove(id)}
+        onClick={deleteForm}
         className="w-fit self-start outline-none dark:bg-red-600 dark:text-white dark:hover:bg-red-700"
       >
         <span className="capitalize">eliminar</span>

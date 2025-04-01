@@ -1,34 +1,19 @@
 import { DocumentIcon } from '@heroicons/react/24/outline';
-import { CustomInput } from '../../../../components/atoms/CustomInput/CustomInput';
+import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
 import { CVSectionHeader } from './molecules/CVSectionHeader';
-import { type EditorForm } from '@/lib/types';
-import { useForm } from '@/hooks/useForm';
-import { useEffect } from 'react';
-import type { FullPersonalInfo } from '@/lib/schemas';
+import { $editorStore } from '../../_shared-store/editor';
+import { FullPersonalInfo as FullPersonalInfoType } from '../../lib/types';
 
-export function PersonalInfoForm({
-  curriculumData,
-  setCurriculumData,
-}: EditorForm) {
-  const { form, handleChange } = useForm<FullPersonalInfo>({
-    firstName: curriculumData.firstName || '',
-    lastName: curriculumData.lastName || '',
-    phone: curriculumData.phone || '',
-    email: curriculumData.email || '',
-    job: curriculumData.job || '',
-    // image: curriculumData.image || undefined,
-  });
+type FullPersonalInfo = keyof FullPersonalInfoType
 
-  useEffect(() => {
-    if (
-      form.firstName !== curriculumData.firstName ||
-      form.lastName !== curriculumData.lastName ||
-      form.phone !== curriculumData.phone ||
-      form.email !== curriculumData.email ||
-      form.job !== curriculumData.job
-    )
-      setCurriculumData({ ...curriculumData, ...form });
-  }, [form, curriculumData, setCurriculumData]);
+export function PersonalInfoForm() {
+  const { personalInfo } = $editorStore.selectors.useCurriculumData();
+  const {updateField} = $editorStore.actions
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const {name, value} = e.target
+    updateField({form:'personalInfo', field: name as FullPersonalInfo, value})
+  }
 
   return (
     <div className="">
@@ -60,30 +45,38 @@ export function PersonalInfoForm({
             label="Nombre(s)"
             name="firstName"
             placeholder="Carlos Enrique"
-            value={form.firstName}
+            value={personalInfo.firstName}
             onChange={handleChange}
           />
           <CustomInput
             label="Apellidos"
             name="lastName"
             placeholder="Salinas Franco"
-            value={form.lastName}
+            value={personalInfo.lastName}
             onChange={handleChange}
           />
         </div>
+        
+        <CustomInput
+          label="Especialidad"
+          name="job"
+          placeholder="Frontend Developer React"
+          value={personalInfo.job}
+          onChange={handleChange}
+        />
 
         <CustomInput
           label="Telefono"
           name="phone"
           placeholder="5598674501"
-          value={form.phone}
+          value={personalInfo.phone}
           onChange={handleChange}
         />
         <CustomInput
           label="Correo electronico"
           name="email"
           placeholder="carlos@dominio.com"
-          value={form.email}
+          value={personalInfo.email}
           onChange={handleChange}
         />
       </form>

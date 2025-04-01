@@ -1,21 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import type { WorkExperience } from '@/lib/schemas';
-import { EditorForm } from '@/lib/types';
+import { useEffect, useRef } from 'react';
 import Button from '@/components/atoms/Button/Button';
-import { WorkExperienceEntryForm } from '@/app/(main)/editor/components/molecules/WorkExperienceEntryForm';
+import { WorkExperienceEntryForm } from '../components/molecules/WorkExperienceEntryForm';
 import { DynamicList } from '@/components/organisms/DynamicList/DynamicList';
+import { $editorStore } from '../../_shared-store/editor';
 
-type workExperienceFormWithId = WorkExperience & {
-  id: string;
-};
+export function WorkExperienceForm() {
+  const workExperiences = $editorStore.selectors.useWorkExperience()
+  const { addEntry } = $editorStore.actions;
 
-export function WorkExperienceForm({
-  curriculumData,
-  setCurriculumData,
-}: EditorForm) {
-  const [workExperiences, setWorkExperiences] = useState<
-    workExperienceFormWithId[]
-  >([]);
   const listRef = useRef<HTMLOListElement | null>(null);
 
   useEffect(() => {
@@ -33,25 +25,6 @@ export function WorkExperienceForm({
     }
   }, [workExperiences]);
 
-  function removeWorkExperience(id: string) {
-    const newExperiences = workExperiences.filter((form) => form.id !== id);
-    setWorkExperiences(newExperiences);
-  }
-
-  function addWorkExperienceForm() {
-    const newForm: WorkExperience & { id: string } = {
-      id: crypto.randomUUID(),
-      jobTitle: '',
-      company: '',
-      startDate: new Date().toISOString().split('T')[0],
-      endDate: '',
-      workExperienceDescription: '',
-    };
-    setWorkExperiences((prevWorkExperiences) => [
-      ...prevWorkExperiences,
-      newForm,
-    ]);
-  }
 
   return (
     <div className="flex flex-col items-center gap-4">
@@ -65,21 +38,14 @@ export function WorkExperienceForm({
 
       <DynamicList
         items={workExperiences}
-        renderItem={(workExperience, _) => (
-          <WorkExperienceEntryForm
-            id={workExperience.id}
-            onRemove={removeWorkExperience}
-            curriculumData={curriculumData}
-            setCurriculumData={setCurriculumData}
-          />
-        )}
+        renderItem={(it) => <WorkExperienceEntryForm form={it} />}
         keyPrefix="workExperienceEntry"
         direction="vertical"
       />
 
       <Button
         className="dark:bg-white dark:text-black"
-        onClick={addWorkExperienceForm}
+        onClick={() => addEntry('workExperience')}
       >
         Agregar experiencia laboral
       </Button>

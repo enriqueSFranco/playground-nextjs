@@ -1,7 +1,7 @@
 import { lusitana } from '@/ui/fonts';
 import { clsx } from 'clsx';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
-import Button from '../../atoms/Button/Button';
+import {Button} from '../../atoms/Button/Button';
 
 interface Breadcrumb {
   label: string;
@@ -27,7 +27,7 @@ export function Breadcrumbs({
       <ol
         className={clsx(
           lusitana.className,
-          'flex flex-wrap items-center justify-center text-xl md:text-2xl',
+          'flex flex-wrap items-center justify-center gap-2 text-xl md:text-2xl',
         )}
       >
         {breadcrumbs.map((breadcrumb, index) => {
@@ -43,7 +43,7 @@ export function Breadcrumbs({
               {currentStep === breadcrumb.href ? (
               <span className={`capitalize ${isCurrentStep ? "text-white underline underline-offset-4 pointer-events-none" : null}`}>{breadcrumb.label}</span>
               ) : (
-                <Button onClick={() => updateStepInURL(breadcrumb.href)} className='text-gray-400 capitalize'>
+                <Button onClick={() => updateStepInURL(breadcrumb.href)}>
                   {breadcrumb.label}
                 </Button>
               )}

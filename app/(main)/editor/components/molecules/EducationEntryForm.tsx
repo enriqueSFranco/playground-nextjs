@@ -1,6 +1,7 @@
 import { CustomInput } from "../../../../../components/atoms/CustomInput/CustomInput";
 
 export function EducationEntryForm() {
+  // const {form, updateField } = useEditorStore(state => ({form: state.curriculumData, updateField: state.updateField})) 
     return (
       <div className="flex flex-col gap-4">
         <form action="">

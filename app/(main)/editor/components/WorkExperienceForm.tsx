@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import Button from '@/components/atoms/Button/Button';
+import {Button} from '@/components/atoms/Button/Button';
 import { WorkExperienceEntryForm } from '../components/molecules/WorkExperienceEntryForm';
 import { DynamicList } from '@/components/organisms/DynamicList/DynamicList';
 import { $editorStore } from '../../_shared-store/editor';

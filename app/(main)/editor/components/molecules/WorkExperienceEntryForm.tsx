@@ -1,5 +1,5 @@
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import Button from '@/components/atoms/Button/Button';
+import {Button} from '@/components/atoms/Button/Button';
 import { IconGrid } from '@/components/atoms/Icons/IconGrid';
 import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
 import { $editorStore } from '@/app/(main)/_shared-store/editor';
@@ -14,8 +14,8 @@ interface Props {
 export function WorkExperienceEntryForm({ form }: Props) {
   const { updateField, removeEntry } = $editorStore.actions;
 
-  const { id, jobTitle, company, startDate, endDate, description } = form;
-  console.log("id:",id)
+  const { id, position, company, startDate, endDate, description } = form;
+
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
     updateField({form: 'workExperience', field: name as WorkExperienceFields, value, index: form.id});
@@ -29,7 +29,7 @@ export function WorkExperienceEntryForm({ form }: Props) {
     <div className="borde-[1px] flex flex-col gap-4 rounded-sm border border-white/20 p-4">
       <header className="flex w-full flex-col gap-4">
         <div className="flex items-start justify-between">
-          <h2 className="font-bold">Tu experiencia laboral {id}</h2>
+          <h2 className="font-bold">Tu experiencia laboral {position}</h2>
           <IconGrid />
         </div>
         <div className="w-fit self-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-[0.5px]">
@@ -42,9 +42,9 @@ export function WorkExperienceEntryForm({ form }: Props) {
       <form action="" className="flex flex-col space-y-4">
         <CustomInput
           placeholder="Frontend Developer"
-          name="jobTitle"
+          name="position"
           label="Nombre del puesto"
-          value={jobTitle}
+          value={position}
           onChange={handleChange}
         />
         <CustomInput

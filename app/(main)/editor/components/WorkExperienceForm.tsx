@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+// import { useEffect, useRef } from 'react';
 import {Button} from '@/components/atoms/Button/Button';
 import { WorkExperienceEntryForm } from '../components/molecules/WorkExperienceEntryForm';
 import { DynamicList } from '@/components/organisms/DynamicList/DynamicList';
@@ -8,22 +8,22 @@ export function WorkExperienceForm() {
   const workExperiences = $editorStore.selectors.useWorkExperience()
   const { addEntry } = $editorStore.actions;
 
-  const listRef = useRef<HTMLOListElement | null>(null);
+  // const listRef = useRef<HTMLOListElement | null>(null);
 
-  useEffect(() => {
-    if (workExperiences.length > 0 && listRef.current) {
-      // Nos aseguramos de hacer scroll hacia el último elemento
-      setTimeout(() => {
-        const lastItem = listRef.current?.lastElementChild;
-        if (lastItem) {
-          lastItem.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-          });
-        }
-      }, 50);
-    }
-  }, [workExperiences]);
+  // useEffect(() => {
+  //   if (workExperiences.length > 0 && listRef.current) {
+  //     // Nos aseguramos de hacer scroll hacia el último elemento
+  //     setTimeout(() => {
+  //       const lastItem = listRef.current?.lastElementChild;
+  //       if (lastItem) {
+  //         lastItem.scrollIntoView({
+  //           behavior: 'smooth',
+  //           block: 'start',
+  //         });
+  //       }
+  //     }, 50);
+  //   }
+  // }, [workExperiences]);
 
 
   return (

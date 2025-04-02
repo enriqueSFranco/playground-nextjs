@@ -1,9 +1,11 @@
+import { useCallback } from 'react';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import {Button} from '@/components/atoms/Button/Button';
 import { IconGrid } from '@/components/atoms/Icons/IconGrid';
 import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
 import { $editorStore } from '@/app/(main)/_shared-store/editor';
 import { EditorForms, WorkExperience } from '@/app/(main)/lib/types';
+import { Tiptap } from '@/components/organisms/TipTap/TipTap';
 
 type WorkExperienceFields = keyof EditorForms['workExperience'];
 
@@ -16,10 +18,23 @@ export function WorkExperienceEntryForm({ form }: Props) {
 
   const { id, position, company, startDate, endDate, description } = form;
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    updateField({form: 'workExperience', field: name as WorkExperienceFields, value, index: form.id});
+    updateField({form: 'workExperience', field: name as WorkExperienceFields, value, index: id});
   }
+
+  const handleChange = useCallback(
+    (value: string) => {
+      console.log(value, "value")
+      updateField({
+        form: 'workExperience',
+        field: 'description' as WorkExperienceFields,
+        value: value,
+        index: id,
+      });
+    },
+    [updateField, id]
+  );
 
   function deleteForm() {
     removeEntry('workExperience', form.id)
@@ -39,20 +54,20 @@ export function WorkExperienceEntryForm({ form }: Props) {
           </Button>
         </div>
       </header>
-      <form action="" className="flex flex-col space-y-4">
+      <form className="flex flex-col space-y-4">
         <CustomInput
           placeholder="Frontend Developer"
           name="position"
           label="Nombre del puesto"
           value={position}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <CustomInput
           placeholder="Empresa XYZ"
           name="company"
           label="Empresa"
           value={company}
-          onChange={handleChange}
+          onChange={handleInputChange}
         />
         <div className="flex w-full flex-col gap-2">
           <div className="flex w-full items-center justify-between gap-8">
@@ -61,14 +76,14 @@ export function WorkExperienceEntryForm({ form }: Props) {
               name="startDate"
               label="Fecha de inicio"
               value={startDate}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
             <CustomInput
               type="date"
               name="endDate"
               label="Fecha de finalización"
               value={endDate}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
           </div>
           <p className="text-xs font-normal text-gray-300">
@@ -76,7 +91,7 @@ export function WorkExperienceEntryForm({ form }: Props) {
             <span className="font-bold">fecha de finalización</span> sin llenar.
           </p>
         </div>
-        {/* <TextEditor /> */}
+        <Tiptap content={description} onChange={handleChange} />
       </form>
       <Button
         onClick={deleteForm}

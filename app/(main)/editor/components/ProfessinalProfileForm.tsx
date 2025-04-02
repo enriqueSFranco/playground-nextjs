@@ -4,6 +4,7 @@ import { CVSectionHeader } from './molecules/CVSectionHeader';
 import { Tiptap } from '@/components/organisms/TipTap/TipTap';
 
 export function ProfessionalProfileForm() {
+  const {professionalProfile} = $editorStore.selectors.useCurriculumData()
   const { updateField } = $editorStore.actions;
 
   const handleChange = useCallback((value: string) => {
@@ -21,7 +22,7 @@ export function ProfessionalProfileForm() {
         description="Comparte un breve resumen sobre tu carrera, habilidades y lo que te hace destacar en tu campo."
       />
 
-      <Tiptap onChange={handleChange} />
+      <Tiptap content={professionalProfile.resumeProfile} onChange={handleChange} />
     </div>
   );
 }

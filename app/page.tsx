@@ -1,36 +1,29 @@
 import Link from 'next/link';
-import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
+import Navbar from './(main)/resumes/Navbar';
 
-export default function Page () {
+export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        <AcmeLogo />
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-          <p className={`text-xl text-gray-800 md:text-3xl md:leading-normal`}>
-            <strong>Welcome to Acme.</strong> This is the example for the{' '}
-            <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
-            </a>
-            , brought to you by Vercel.
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      <main className="flex grow flex-col items-center justify-center dark:bg-black">
+        <div className="flex flex-col justify-center items-center gap-6 md:w-2/5 md:px-20">
+          <p className="text-xl text-center text-balance lg:text-3xl lg:leading-normal">
+            <strong>Welcome to Acme.</strong> This is the example for the
           </p>
           <Link
-            href="/auth/login"
-            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+            href="/resumes"
+            className="flex items-center gap-5 self-center rounded-lg outline outline-[1px] dark:outline-white/20 px-6 capitalize py-3 text-md font-medium text-white transition-colors dark:hover:bg-white/10"
           >
-            <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
+            <span className='text-sm font-bold'>comenzar</span> <ArrowRightIcon className="w-5" />
           </Link>
         </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          {/* Add Hero Images Here */}
-          <Image width={1000} height={600} className='hidden md:block' src='/hero-desktop.png' alt='hero desktop' />
-          <Image width={1000} height={600} className='block md:hidden' src='/hero-mobile.png' alt='hero desktop' />
-        </div>
-      </div>
-    </main>
+      </main>
+      <footer className="">
+        <p className="dark:bg-black">
+          creado con 💙 por @enriqueSF
+        </p>
+      </footer>
+    </div>
   );
 }

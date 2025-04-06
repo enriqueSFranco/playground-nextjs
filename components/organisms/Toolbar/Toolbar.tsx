@@ -15,23 +15,26 @@ export const Toolbar = ({editor}: Props) => {
   return (
     <nav className="flex h-10 p-1 mb-1 bg-white/10 space-x-2 z-50">
         <Button
+        type='button'
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={!editor.can().chain().focus().toggleBold().run()}
-          className={editor.isActive('bold') ? 'is-active' : ''}
+          className={editor.isActive('bold') ? 'bg-white/10 text-white transition-colors duration-300 ease-in-out' : ''}
         >
           <BoldIcon className='w-4 h-4' />
         </Button>
         <Button
+        type='button'
           onClick={() => editor.chain().focus().toggleItalic().run()}
           disabled={!editor.can().chain().focus().toggleItalic().run()}
-          className={editor.isActive('italic') ? 'is-active' : ''}
+          className={editor.isActive('italic') ? 'bg-white/10 text-white transition-colors duration-300 ease-in-out' : ''}
         >
           <ItalicIcon className='w-4 h-4' />
         </Button>
 
         <Button
+        type='button'
           onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={editor.isActive('bulletList') ? 'is-active' : ''}
+          className={editor.isActive('bulletList') ? 'bg-white/10 text-white transition-colors duration-300 ease-in-out' : ''}
         >
           <ListBulletIcon className='w-4 h-4' />
         </Button>

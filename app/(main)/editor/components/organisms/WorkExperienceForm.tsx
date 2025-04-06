@@ -1,8 +1,11 @@
+"use client"
 // import { useEffect, useRef } from 'react';
+import {DndContext, closestCenter} from "@dnd-kit/core"
+import {SortableContext, verticalListSortingStrategy} from "@dnd-kit/sortable"
 import {Button} from '@/components/atoms/Button/Button';
-import { WorkExperienceEntryForm } from '../components/molecules/WorkExperienceEntryForm';
-import { DynamicList } from '@/components/organisms/DynamicList/DynamicList';
-import { $editorStore } from '../../_shared-store/editor';
+import { WorkExperienceEntryForm } from '../molecules/WorkExperienceEntryForm';
+// import { DynamicList } from '@/components/organisms/DynamicList/DynamicList';
+import { $editorStore } from '../../../_shared-store/editor';
 
 export function WorkExperienceForm() {
   const workExperiences = $editorStore.selectors.useWorkExperience()
@@ -35,13 +38,20 @@ export function WorkExperienceForm() {
           Agrega tantas experiencias laborales como desees
         </p>
       </header>
-
-      <DynamicList
-        items={workExperiences}
-        renderItem={(it) => <WorkExperienceEntryForm form={it} />}
-        keyPrefix="workExperienceEntry"
-        direction="vertical"
-      />
+      <DndContext collisionDetection={closestCenter}>
+        <SortableContext items={workExperiences} strategy={verticalListSortingStrategy}>
+          {
+            workExperiences.map(it => <WorkExperienceEntryForm key={it.id} form={it} />)
+          }
+          
+        </SortableContext>
+      </DndContext>
+        {/* <DynamicList
+          items={workExperiences}
+          renderItem={(it) => <WorkExperienceEntryForm form={it} />}
+          keyPrefix="workExperienceEntry"
+          direction="vertical"
+        /> */}
 
       <Button
         className="dark:bg-white dark:text-black"

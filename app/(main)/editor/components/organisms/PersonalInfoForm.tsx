@@ -1,8 +1,8 @@
 import { DocumentIcon } from '@heroicons/react/24/outline';
 import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
-import { CVSectionHeader } from './molecules/CVSectionHeader';
-import { $editorStore } from '../../_shared-store/editor';
-import { FullPersonalInfo as FullPersonalInfoType } from '../../lib/types';
+import { CVSectionHeader } from '../molecules/CVSectionHeader';
+import { $editorStore } from '../../../_shared-store/editor';
+import { FullPersonalInfo as FullPersonalInfoType } from '../../../lib/types';
 
 type FullPersonalInfo = keyof FullPersonalInfoType
 

@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
-import { $editorStore } from '../../_shared-store/editor';
-import { CVSectionHeader } from './molecules/CVSectionHeader';
+import { $editorStore } from '../../../_shared-store/editor';
+import { CVSectionHeader } from './CVSectionHeader';
 import { Tiptap } from '@/components/organisms/TipTap/TipTap';
 
 export function ProfessionalProfileForm() {

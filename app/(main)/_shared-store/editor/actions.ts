@@ -1,12 +1,5 @@
-import { create } from 'zustand';
-import { immer } from 'zustand/middleware/immer';
-import { EditorForms } from '../lib/types';
-import { Education, WorkExperience } from '../lib/types';
-import { useShallow } from 'zustand/shallow';
-
-type State = {
-  curriculumData: EditorForms;
-};
+import { EditorForms, WorkExperience, Education } from "../../lib/types";
+import { useEditorStore } from "./state";
 
 type Actions = {
   updateField: <T extends keyof EditorForms>({
@@ -24,7 +17,7 @@ type Actions = {
   removeEntry: <T extends keyof EditorForms>(form: T, id: string) => void;
 };
 
-const actions: Actions = {
+export const actions: Actions = {
   updateField: ({ form, field, value, index }) => {
     const set = useEditorStore.setState;
 
@@ -55,7 +48,7 @@ const actions: Actions = {
           // Añadir un formulario vacío para 'workExperience'
           const newWorkExperienceForm: WorkExperience = {
             id: crypto.randomUUID(),
-            jobTitle: '',
+            position: '',
             company: '',
             startDate: '',
             endDate: '',
@@ -96,33 +89,4 @@ const actions: Actions = {
       }
     });
   },
-};
-
-const selectors = {
-  useCurriculumData: () => useEditorStore(useShallow(state => state.curriculumData)),
-  useWorkExperience: () => useEditorStore(useShallow(state => state.curriculumData.workExperience)),
-  useEducation: () => useEditorStore(useShallow(state => state.curriculumData.education))
-};
-
-export const useEditorStore = create(immer<State>(() => ({
-  curriculumData: {
-    generalInfo: { title: '', description: '' },
-    personalInfo: {
-      firstName: '',
-      lastName: '',
-      job: '',
-      phone: '',
-      email: '',
-      image: undefined,
-    },
-    professionalProfile: { resumeProfile: '' },
-    knowledge: { skills: '' },
-    workExperience: [],
-    education: [],
-  },
-})));
-
-export const $editorStore = {
-  actions,
-  selectors,
 };

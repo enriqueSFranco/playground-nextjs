@@ -1,7 +1,7 @@
 import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
-import { CVSectionHeader } from './molecules/CVSectionHeader';
-import { EditorForms } from '../../lib/types';
-import { $editorStore } from '../../_shared-store/editor';
+import { CVSectionHeader } from './CVSectionHeader';
+import { EditorForms } from '../../../lib/types';
+import { $editorStore } from '../../../_shared-store/editor';
 
 type GeneralInfoFields = keyof EditorForms['generalInfo']
 
@@ -43,7 +43,3 @@ export function GeneralInfoForm() {
     </div>
   );
 }
-function useCurriculumData(arg0: (state: unknown) => { form: any; updateField: any; }): { form: any; updateField: any; } {
-  throw new Error('Function not implemented.');
-}
-

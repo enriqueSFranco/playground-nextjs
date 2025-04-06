@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { $editorStore } from '../../_shared-store/editor';
+import { $editorStore } from '../../../_shared-store/editor';
 import { Tiptap } from '@/components/organisms/TipTap/TipTap';
 
 export function KnowledgeForm() {
@@ -15,7 +15,7 @@ export function KnowledgeForm() {
 
   return (
     <div>
-        <Tiptap onChange={handleChange} />
+        <Tiptap content='' onChange={handleChange} />
     </div>
   );
 }

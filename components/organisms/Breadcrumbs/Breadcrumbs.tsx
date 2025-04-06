@@ -1,4 +1,4 @@
-import { lusitana } from '@/ui/fonts';
+import { lusitana } from '@/fonts/fonts';
 import { clsx } from 'clsx';
 import { ChevronRightIcon } from '@heroicons/react/24/outline';
 import {Button} from '../../atoms/Button/Button';
@@ -43,7 +43,7 @@ export function Breadcrumbs({
               {currentStep === breadcrumb.href ? (
               <span className={`capitalize ${isCurrentStep ? "text-white underline underline-offset-4 pointer-events-none" : null}`}>{breadcrumb.label}</span>
               ) : (
-                <Button onClick={() => updateStepInURL(breadcrumb.href)}>
+                <Button onClick={() => updateStepInURL(breadcrumb.href)} className='text-gray-500 p-0'>
                   {breadcrumb.label}
                 </Button>
               )}

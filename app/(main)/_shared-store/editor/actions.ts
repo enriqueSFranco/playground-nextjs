@@ -1,5 +1,5 @@
-import { useEditorStore } from ".";
 import { EditorForms, WorkExperience, Education } from "../../lib/types";
+import { useEditorStore } from "./state";
 
 type Actions = {
   updateField: <T extends keyof EditorForms>({

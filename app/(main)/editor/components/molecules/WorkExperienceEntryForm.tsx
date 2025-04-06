@@ -1,4 +1,5 @@
 import { useCallback } from 'react';
+import { useSortable } from '@dnd-kit/sortable';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import {Button} from '@/components/atoms/Button/Button';
 import { IconGrid } from '@/components/atoms/Icons/IconGrid';
@@ -14,6 +15,9 @@ interface Props {
 }
 
 export function WorkExperienceEntryForm({ form }: Props) {
+  const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
+    id: form.id
+  })
   const { updateField, removeEntry } = $editorStore.actions;
 
   const { id, position, company, startDate, endDate, description } = form;
@@ -25,7 +29,6 @@ export function WorkExperienceEntryForm({ form }: Props) {
 
   const handleChange = useCallback(
     (value: string) => {
-      console.log(value, "value")
       updateField({
         form: 'workExperience',
         field: 'description' as WorkExperienceFields,
@@ -45,7 +48,9 @@ export function WorkExperienceEntryForm({ form }: Props) {
       <header className="flex w-full flex-col gap-4">
         <div className="flex items-start justify-between">
           <h2 className="font-bold">Tu experiencia laboral {position}</h2>
-          <IconGrid />
+          <div ref={setNodeRef} {...attributes} {...listeners}>
+            <IconGrid />
+          </div>
         </div>
         <div className="w-fit self-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-[0.5px]">
           <Button className="transition-colors duration-300 ease-in-out hover:bg-transparent dark:bg-black">

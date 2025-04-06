@@ -55,7 +55,7 @@ const actions: Actions = {
           // Añadir un formulario vacío para 'workExperience'
           const newWorkExperienceForm: WorkExperience = {
             id: crypto.randomUUID(),
-            jobTitle: '',
+            position: '',
             company: '',
             startDate: '',
             endDate: '',

@@ -15,7 +15,7 @@ export function DynamicList<T extends {id: string}>({
 }: ListItemProps<T>) {
   return (
     <ol
-      className={`flex ${direction === 'horizontal' ? 'flex-row' : 'flex-col'} gap-8`}
+      className={`flex ${direction === 'horizontal' ? 'flex-row' : 'flex-col'} gap-8 w-full`}
     >
       {items.map((item, idx) => (
         <li key={`${keyPrefix}-${item.id}`}>

@@ -7,10 +7,11 @@ import BulletList from '@tiptap/extension-bullet-list';
 import { Toolbar } from '../Toolbar/Toolbar';
 
 interface Props {
+  content: string
   onChange: (value: string) => void;
 }
 
-export const Tiptap = ({ onChange }: Props) => {
+export const Tiptap = ({ content, onChange }: Props) => {
   const editor = useEditor({
     extensions: [
       BulletList,
@@ -21,12 +22,17 @@ export const Tiptap = ({ onChange }: Props) => {
             class: 'list-disc ml-4',
           },
         },
+        paragraph: {
+          HTMLAttributes: {
+            class: 'mb-2'
+          }
+        }
       }),
     ],
-    content: '',
+    content: content,
     editorProps: {
       attributes: {
-        class: ' rounded-sm min-h-[156px] w-full outline-none px-2 py-1',
+        class: 'prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none min-h-[125px]',
       },
     },
     onUpdate({ editor }) {

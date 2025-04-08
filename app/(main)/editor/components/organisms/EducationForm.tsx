@@ -1,7 +1,7 @@
 import { CVSectionHeader } from '@/app/(main)/editor/components/molecules/CVSectionHeader';
 import { DynamicList } from '@/components/organisms/DynamicList/DynamicList';
 import { EducationEntryForm } from '@/app/(main)/editor/components/molecules/EducationEntryForm';
-import { useEditorStore } from '../../../_shared-store/editor';
+import { useEditorStore } from '@/app/(main)/_shared-store/editor/state';
 
 export function EducationForm() {
   const forms = useEditorStore(state => state.curriculumData.workExperience)

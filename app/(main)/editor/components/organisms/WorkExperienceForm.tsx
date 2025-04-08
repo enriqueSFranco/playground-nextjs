@@ -4,8 +4,8 @@ import {DndContext, closestCenter} from "@dnd-kit/core"
 import {SortableContext, verticalListSortingStrategy} from "@dnd-kit/sortable"
 import {Button} from '@/components/atoms/Button/Button';
 import { WorkExperienceEntryForm } from '../molecules/WorkExperienceEntryForm';
+import { $editorStore } from "@/app/(main)/_shared-store/editor";
 // import { DynamicList } from '@/components/organisms/DynamicList/DynamicList';
-import { $editorStore } from '../../../_shared-store/editor';
 
 export function WorkExperienceForm() {
   const workExperiences = $editorStore.selectors.useWorkExperience()

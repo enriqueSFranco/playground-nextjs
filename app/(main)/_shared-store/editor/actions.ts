@@ -23,7 +23,7 @@ export const actions: Actions = {
 
     set((state) => {
       const formData = state.curriculumData[form];
-
+      // console.log('Current form data:', JSON.parse(JSON.stringify(formData)))
       if (Array.isArray(formData)) {
         const formIndex = formData.findIndex((form) => form.id === index); // recuperamos el indice del form
         if (formIndex !== -1) {

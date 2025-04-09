@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { SunIcon } from '@heroicons/react/24/outline';
 import {Button} from '@/components/atoms/Button/Button';
 import { MoonIcon } from "@heroicons/react/24/outline";
-import IntelliceCVLogo from '@/ui/AppLogo';
+import IntelliceCVLogo from '@/components/atoms/AppLogo';
 import { useThemeStore } from '@/app/(main)/_shared-store/theme';
 
 export default function Navbar() {

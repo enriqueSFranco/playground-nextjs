@@ -19,7 +19,7 @@ export type EditorForms = {
 
 export type Theme = 'light' | 'dark';
 
-export enum Steps {
+export enum STEP_KEYS {
   GENERAL_INFO = 'general-info',
   PERSONAL_INFO = 'personal-info',
   PROFESSIONAL_PROFILE = 'professional-profile',
@@ -27,5 +27,3 @@ export enum Steps {
   EDUCATION = 'education',
   KNOWLEDGE = 'knowledge',
 }
-
-export type StepsType = Steps;

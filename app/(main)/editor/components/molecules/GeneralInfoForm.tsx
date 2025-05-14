@@ -32,13 +32,13 @@ export function GeneralInfoForm() {
   }
 
   return (
-    <div className="mx-auto flex w-full flex-col space-y-6">
+    <div className="mx-auto flex flex-col space-y-6">
       <CVSectionHeader
         title="Información general"
         description="Esta sección no aparecerá en tu currículum."
       />
 
-      <form className="flex flex-col justify-start space-y-8">
+      <form className="flex flex-col space-y-8 mt-6">
         <CustomInput
           label="Título del currículum"
           name="title"
@@ -47,14 +47,17 @@ export function GeneralInfoForm() {
           placeholder="CV Salinas Franco Carlos (Frontend Developer)"
           error={errors.title}
         />
-        <CustomInput
-          label="Descripción"
-          name="description"
-          value={generalInfo.description}
-          onChange={handleChange}
-          placeholder="Curriculumn orientado a Frontend con experiencia en React"
-          error={errors.description}
-        />
+        <div className="flex flex-col gap-2">
+          <CustomInput
+            label="Descripción"
+            name="description"
+            value={generalInfo.description}
+            onChange={handleChange}
+            placeholder="Curriculumn orientado a Frontend con experiencia en React"
+            error={errors.description}
+          />
+          <p className="text-sm text-gray-600 dark:text-gray-400">Describe para qué sirve este currículum</p>
+        </div>
       </form>
     </div>
   );

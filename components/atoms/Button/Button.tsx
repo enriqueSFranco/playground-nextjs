@@ -25,7 +25,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   const baseClass =
-    'px-2 py-1 rounded-sm w-fit font-normal capitalize text-sm flex items-center justify-center gap-2 px-4 py-2'; // Clases base
+    'px-2 py-1 rounded-sm max-w-sm font-normal capitalize text-sm flex items-center justify-center gap-2 px-4 py-2 relative'; // Clases base
 
   let buttonClass = cn(
     {

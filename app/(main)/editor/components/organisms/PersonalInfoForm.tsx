@@ -1,4 +1,4 @@
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod'
 import { DocumentIcon } from '@heroicons/react/24/outline';
 import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
@@ -12,20 +12,19 @@ type FullPersonalInfo = keyof FullPersonalInfoType
 export function PersonalInfoForm() {
   const personalInfo = $editorStore.selectors.useCurriculumData().personalInfo;
   const updateField = $editorStore.actions.updateField
-  const {register, formState: {errors}, trigger, setValue} = useForm<FullPersonalInfoType>({
-    resolver: zodResolver(fullPersonalInfoSchem),
-    defaultValues: personalInfo,
-    mode: 'onChange'
-  })
+  // const {register, formState: {errors}, trigger, setValue} = useForm<FullPersonalInfoType>({
+  //   resolver: zodResolver(fullPersonalInfoSchem),
+  //   defaultValues: personalInfo,
+  //   mode: 'onChange'
+  // })
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const {name, value} = e.target
 
     updateField({form:'personalInfo', field: name as FullPersonalInfo, value})
-    setValue(name as FullPersonalInfo, value)
+    // setValue(name as FullPersonalInfo, value)
     // trigger(name as FullPersonalInfo)
   }
-  console.log(JSON.stringify(errors, null, 2))
   return (
     <div>
       <CVSectionHeader
@@ -53,13 +52,13 @@ export function PersonalInfoForm() {
 
         <div className="flex w-full items-center justify-between gap-8">
           <CustomInput
-            {...register("firstName", { required: true })}
+            // {...register("firstName", { required: true })}
             label="Nombre(s)"
             name="firstName"
             placeholder="Jhon"
             value={personalInfo.firstName}
             onChange={handleChange}
-            error={errors.firstName && errors.firstName.message}
+            // error={errors.firstName && errors.firstName.message}
           />
           <CustomInput
             label="Apellidos"

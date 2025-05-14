@@ -12,16 +12,18 @@ export function PersonalInfoHeader({ personalInfo }: PersonalInfoHeaderProps) {
 
   return (
     <header
-      className={`w-full max-w-4xl border border-gray-200 bg-white px-4 py-2 transition-shadow duration-300 hover:shadow-sm`}
+      className="w-full border-b-[1px] border-dashed border-neutral-300 bg-white px-4 py-2 transition-shadow duration-300 hover:shadow-sm"
       aria-labelledby="personal-info-header"
     >
       {image && (
-        <img
-          src={image}
-          alt="Imagen de perfil"
-          className="h-24 w-24 rounded-full object-cover shadow-md transition-shadow duration-300 hover:shadow-xl"
-          aria-hidden="true"
-        />
+        <picture>
+          <img
+            src={""}
+            alt="Imagen de perfil"
+            className="h-24 w-24 rounded-full object-cover shadow-md transition-shadow duration-300 hover:shadow-xl"
+            aria-hidden="true"
+          />
+        </picture>
       )}
       <div className="flex flex-1 flex-col items-start gap-4">
         <h2

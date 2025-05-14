@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import { clsx } from 'clsx';
+import { IcError } from '../Icons/IconError';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -10,7 +11,7 @@ export function CustomInput({ label, error, ...rest }: Props) {
   const inputHintId = useId();
 
   return (
-    <div className="flex flex-col gap-2 h-28 w-full outline">
+    <div className="flex flex-col gap-2 h-28 w-full">
       <label
         htmlFor={inputHintId}
         className="block w-full text-sm font-normal dark:text-white"
@@ -31,12 +32,13 @@ export function CustomInput({ label, error, ...rest }: Props) {
       />
       {error && (
         <p
-          className={clsx({
-            'mt-2 text-sm text-green-600 dark:text-green-500': !error.trim(),
-            'mt-2 text-sm text-red-600 dark:text-red-500': error.trim(),
+          className={clsx('text-xs mt-2 flex items-center justify-content-center gap-1',{
+            'text-green-600 dark:text-green-500': !error.trim(),
+            'text-red-600 dark:text-red-500': error.trim(),
           })}
         >
-          <span className="font-medium">Well done!</span> Some success message.
+          <IcError />
+          <span>{error}</span>
         </p>
       )}
     </div>

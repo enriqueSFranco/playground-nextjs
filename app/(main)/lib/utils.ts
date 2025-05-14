@@ -1,8 +1,9 @@
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { STEPS } from "../editor/steps.d";
+import { STEPS } from "../editor/steps";
 
 export const getCurrentStepIndex = (currentStep: string) => {
+  console.log({currentStep})
   return STEPS.findIndex(({ href }) => href === currentStep);
 };
 
@@ -18,19 +19,16 @@ export const getStepConfig = (currentStep: string) => {
   return STEPS.find((step) => step.href === currentStep) || null;
 }
 
-
-export const formatCurrency = (amount: number) => {
-  return (amount / 100).toLocaleString('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-};
-
-
 export const cn = (...args: ClassValue[]) => twMerge(clsx(args));
 
-
 // CODIGO DEL CURSO DE NEXTJS
+
+// export const formatCurrency = (amount: number) => {
+//   return (amount / 100).toLocaleString('en-US', {
+//     style: 'currency',
+//     currency: 'USD',
+//   });
+// };
 
 // export const formatDateToLocal = (
 //   dateStr: string,

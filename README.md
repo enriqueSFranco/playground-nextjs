@@ -1,6 +1,6 @@
 # 💼 Intellice CV | Aplicación Web para Generar Currículums
 
-![Vista previa de Intellice CV](public/assets/images/home-page-preview.png)
+![Vista previa de Intellice CV](public/assets/images/home-pagepreview.png)
 
 Este proyecto es una aplicación web diseñada para ayudar a los usuarios a crear y gestionar su **Currículum Vitae (CV)** de manera rápida, utilizando **Inteligencia Artificial (IA)** para facilitar la redacción del CV. La aplicación aprovecha la API de **ChatGPT** para generar el contenido y proporciona una experiencia interactiva utilizando **React**, **Tailwind CSS**, y **TypeScript**.
 

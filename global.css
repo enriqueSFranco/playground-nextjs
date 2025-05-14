@@ -16,3 +16,48 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+@layer utilities {
+  @property --border-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  @keyframes rotate-conic {
+    to {
+      --border-angle: 360deg;
+    }
+  }
+
+  .hover-conic-border {
+    position: relative;
+    z-index: 0;
+    transition: background 0.5s ease;
+  }
+
+  .hover-conic-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    opacity: 0;
+    background: conic-gradient(from var(--border-angle), #00c4cc, #ec4899, #8b5cf6, #00c4cc);
+    animation: none;
+    transition: opacity 0.4s ease;
+  }
+
+  .hover-conic-border:hover::before {
+    opacity: 1;
+    animation: rotate-conic 2s linear infinite;
+  }
+
+  /* Optional: glowing effect */
+  .hover-conic-border:hover::before {
+    box-shadow: 0 0 15px rgba(0, 196, 204, 0.4),
+                0 0 30px rgba(236, 72, 153, 0.4),
+                0 0 45px rgba(139, 92, 246, 0.4);
+  }
+}
+

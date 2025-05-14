@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { SparklesIcon } from '@heroicons/react/24/outline';
-import {Button} from '@/components/atoms/Button/Button';
+import { Button } from '@/components/atoms/Button/Button';
 import { IconGrid } from '@/components/atoms/Icons/IconGrid';
 import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
 import { $editorStore } from '@/app/(main)/_shared-store/editor';
@@ -15,16 +15,22 @@ interface Props {
 }
 
 export function WorkExperienceEntryForm({ form }: Props) {
-  const {attributes, listeners, setNodeRef, transform, transition} = useSortable({
-    id: form.id
-  })
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: form.id,
+    });
   const { updateField, removeEntry } = $editorStore.actions;
 
   const { id, position, company, startDate, endDate, description } = form;
 
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
-    updateField({form: 'workExperience', field: name as WorkExperienceFields, value, index: id});
+    updateField({
+      form: 'workExperience',
+      field: name as WorkExperienceFields,
+      value,
+      index: id,
+    });
   }
 
   const handleChange = useCallback(
@@ -36,13 +42,23 @@ export function WorkExperienceEntryForm({ form }: Props) {
         index: id,
       });
     },
-    [updateField, id]
+    [updateField, id],
   );
 
   function deleteForm() {
-    removeEntry('workExperience', form.id)
+    removeEntry('workExperience', form.id);
   }
-
+  // .elemento::after {
+  //   content: ""; /* Debe tener contenido para que funcione */
+  //   position: absolute; /* Posicionamiento absoluto para que esté fuera del flujo */
+  //   bottom: 0;  /* Posición para abajo */
+  //   left: 0; /* Posición para la izquierda */
+  //   width: 100%; /* Ajustar el ancho al elemento padre */
+  //   height: 10px; /* Ajustar la altura del "padding" */
+  //   background-color: red; /* Color de fondo para ver el espacio */
+  //   display: block; /* Cambiar a block o inline-block */
+  //   padding-top: 10px; /* Aplicar padding */
+  // }
   return (
     <div className="borde-[1px] flex flex-col gap-4 rounded-sm border border-white/20 p-4">
       <header className="flex w-full flex-col gap-4">
@@ -52,8 +68,9 @@ export function WorkExperienceEntryForm({ form }: Props) {
             <IconGrid />
           </div>
         </div>
-        <div className="w-fit self-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-[0.5px]">
-          <Button className="transition-colors duration-300 ease-in-out hover:bg-transparent dark:bg-black">
+        {/* bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 */}
+        <div className="hover-conic-border transition-colors ease-in-out w-fit rounded-sm p-px">
+          <Button className="m-auto flex items-center justify-between bg-neutral-900">
             <SparklesIcon className="w-5" />
             <span>Generar con IA</span>
           </Button>

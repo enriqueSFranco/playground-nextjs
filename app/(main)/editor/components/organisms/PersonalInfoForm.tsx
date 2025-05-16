@@ -31,7 +31,7 @@ export function PersonalInfoForm() {
         title="Información Personal"
         description="Cuentanos sobre ti"
       />
-      <form action="" className="flex flex-col gap-4">
+      <form action="" className="flex flex-col space-y-8 mt-6">
         <div className="flex w-1/2 m-auto items-center justify-center">
           <label
             htmlFor="dropzone-file"
@@ -69,7 +69,7 @@ export function PersonalInfoForm() {
             // {...register("lastName"), {require: true}}
           />
         </div>
-        
+
         <CustomInput
           label="Especialidad"
           name="job"

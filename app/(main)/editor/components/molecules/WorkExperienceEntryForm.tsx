@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { SparklesIcon } from '@heroicons/react/24/outline';
 import { Button } from '@/components/atoms/Button/Button';
@@ -7,6 +7,7 @@ import { CustomInput } from '@/components/atoms/CustomInput/CustomInput';
 import { $editorStore } from '@/app/(main)/_shared-store/editor';
 import { EditorForms, WorkExperience } from '@/app/(main)/lib/types';
 import { Tiptap } from '@/components/organisms/TipTap/TipTap';
+import Link from 'next/link';
 
 type WorkExperienceFields = keyof EditorForms['workExperience'];
 
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export function WorkExperienceEntryForm({ form }: Props) {
+  const [isOpen, updateIsOpen] = useState(false)
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
       id: form.id,
@@ -33,6 +35,11 @@ export function WorkExperienceEntryForm({ form }: Props) {
     });
   }
 
+  function toggleModal(id: string) {
+    console.log(`se abrio la modal con id ${id}`)
+    updateIsOpen(prevState => !prevState)
+  }
+
   const handleChange = useCallback(
     (value: string) => {
       updateField({
@@ -46,21 +53,12 @@ export function WorkExperienceEntryForm({ form }: Props) {
   );
 
   function deleteForm() {
+    // http://localhost:3000/editor?curriculumId=sfhsdbfskfsd7s87&show=true&step=work-experience
     removeEntry('workExperience', form.id);
   }
-  // .elemento::after {
-  //   content: ""; /* Debe tener contenido para que funcione */
-  //   position: absolute; /* Posicionamiento absoluto para que esté fuera del flujo */
-  //   bottom: 0;  /* Posición para abajo */
-  //   left: 0; /* Posición para la izquierda */
-  //   width: 100%; /* Ajustar el ancho al elemento padre */
-  //   height: 10px; /* Ajustar la altura del "padding" */
-  //   background-color: red; /* Color de fondo para ver el espacio */
-  //   display: block; /* Cambiar a block o inline-block */
-  //   padding-top: 10px; /* Aplicar padding */
-  // }
+
   return (
-    <div className="borde-[1px] flex flex-col gap-4 rounded-sm border border-white/20 p-4">
+    <div className="borde-[1px] w-full flex flex-col gap-4 p-4">
       <header className="flex w-full flex-col gap-4">
         <div className="flex items-start justify-between">
           <h2 className="font-bold">Tu experiencia laboral {position}</h2>
@@ -68,12 +66,11 @@ export function WorkExperienceEntryForm({ form }: Props) {
             <IconGrid />
           </div>
         </div>
-        {/* bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 */}
-        <div className="hover-conic-border transition-colors ease-in-out w-fit rounded-sm p-px">
-          <Button className="m-auto flex items-center justify-between bg-neutral-900">
+        <div className="m-auto hover-conic-border transition-colors ease-in-out w-fit rounded-sm p-px">
+          <Link href={``} className="m-auto flex items-center justify-between bg-neutral-900" onClick={() => toggleModal(form.id)}>
             <SparklesIcon className="w-5" />
             <span>Generar con IA</span>
-          </Button>
+          </Link>
         </div>
       </header>
       <form className="flex flex-col space-y-4">
@@ -113,7 +110,8 @@ export function WorkExperienceEntryForm({ form }: Props) {
             <span className="font-bold">fecha de finalización</span> sin llenar.
           </p>
         </div>
-        <Tiptap content={description} onChange={handleChange} />
+
+          <Tiptap content={description} onChange={handleChange} />
       </form>
       <Button
         onClick={deleteForm}

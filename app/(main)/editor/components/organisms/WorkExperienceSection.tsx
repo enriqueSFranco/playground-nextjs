@@ -8,7 +8,6 @@ interface WorkExperienceSectionProps {
 export function WorkExperienceSection({
   workExperiences,
 }: WorkExperienceSectionProps) {
-  console.log(workExperiences);
   return (
     <section className="w-full bg-white px-4 py-2">
       <h2 className="mb-6 text-2xl font-semibold text-gray-800">

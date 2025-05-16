@@ -32,7 +32,7 @@ export const Tiptap = ({ content, onChange }: Props) => {
     content: content,
     editorProps: {
       attributes: {
-        class: 'prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none min-h-[125px]',
+        class: 'prose prose-sm sm:prose-base lg:prose-lg xl:prose-2xl bg-gray-100 dark:bg-neutral-800 p-2 focus:outline-none min-h-[125px]',
       },
     },
     onUpdate({ editor }) {
@@ -42,7 +42,7 @@ export const Tiptap = ({ content, onChange }: Props) => {
   });
 
   return (
-    <div className="flex flex-col gap-1 overflow-hidden rounded-md outline outline-[1px] outline-white/20">
+    <div className="flex flex-col overflow-hidden rounded-md outline outline-[1px] outline-white/20">
       <Toolbar editor={editor} />
       <EditorContent editor={editor} />
     </div>

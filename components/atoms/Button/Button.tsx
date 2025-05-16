@@ -31,7 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
     {
       'bg-black text-white hover:bg-white/20': color === 'DEFAULT',
       'bg-blue-500 text-white hover:bg-blue-600': color === 'PRIMARY',
-      'bg-gray-800 text-white hover:bg-gray-700': color === 'SECODNARY',
+      'bg-neutral-900 text-white hover:bg-neutral-800': color === 'SECODNARY',
       'bg-green-500 text-white hover:bg-green-600': color === 'SUCCESS',
       'bg-yellow-500 text-white hover:bg-yellow-600': color === 'WARNING',
       'bg-red-500 text-white hover:bg-red-600': color === 'DANGER',

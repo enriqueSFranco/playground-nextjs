@@ -27,7 +27,7 @@ export function Breadcrumbs({
       <ol
         className={clsx(
           lusitana.className,
-          'flex flex-wrap items-center justify-center gap-2 text-xl md:text-2xl',
+          'flex flex-wrap items-center justify-start gap-1 text-xl',
         )}
       >
         {breadcrumbs.map((breadcrumb, index) => {
@@ -41,9 +41,9 @@ export function Breadcrumbs({
               className="flex items-center text-sm"
             >
               {currentStep === breadcrumb.href ? (
-              <span className={`capitalize ${isCurrentStep ? "text-white underline underline-offset-4 pointer-events-none" : null}`}>{breadcrumb.label}</span>
+              <span className={`capitalize ${isCurrentStep ? "text-blue-500 dark:text-white underline underline-offset-4 pointer-events-none" : null}`}>{breadcrumb.label}</span>
               ) : (
-                <Button onClick={() => updateStepInURL(breadcrumb.href)} className='text-gray-500 p-0'>
+                <Button onClick={() => updateStepInURL(breadcrumb.href)} className='text-sm text-gray-600 dark:text-gray-300 p-0'>
                   {breadcrumb.label}
                 </Button>
               )}

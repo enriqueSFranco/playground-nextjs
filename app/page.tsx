@@ -8,22 +8,24 @@ export default function Page() {
   return (
     <div className={`flex min-h-screen flex-col`}>
       <Navbar />
-      <main className="grid grow grid-cols-2 bg-white dark:bg-black">
+      <main className="grid grow lg:grid-cols-2 bg-white dark:bg-black">
         <section className="flex flex-col items-center justify-center gap-6">
-          <h1 className="max-2xl:text-[2.5em] font-bold">CV fácil y rápido.</h1>
-          <h2 className="max-2xl:text-[2em] max-xl:w-full">
-            Crea tu CV con{' '}
-            <span
-              className="inline-block bg-gradient-to-bl from-green-300 via-blue-500 to-purple-600 bg-clip-text font-bold text-transparent"
-              style={{
-                textShadow:
-                  '0 0 45px #3b82f6, 0 0 45px #3b82f6, 0 0 20px #3b82f6',
-              }}
-            >
-              IA
-            </span>
-            {' '}de manera rápida y sencilla.
-          </h2>
+          <div className="flex flex-col items-center justify-center gap-2">
+            <h1 className="text-3xl lg:max-2xl:text-[2.5em] font-bold">CV fácil y rápido.</h1>
+            <h2 className="text-xl text-center lg:max-2xl:text-[2em] max-xl:w-full">
+              Crea tu CV con{' '}
+              <span
+                className="inline-block bg-gradient-to-bl from-green-300 via-blue-500 to-purple-600 bg-clip-text font-bold text-transparent"
+                style={{
+                  textShadow:
+                    '0 0 45px #3b82f6, 0 0 45px #3b82f6, 0 0 20px #3b82f6',
+                }}
+              >
+                IA
+              </span>
+              {' '}de manera rápida y sencilla.
+            </h2>
+          </div>
           <Link
             href="/resumes"
             className="text-md flex items-center justify-between gap-2 rounded-full px-[10px] bg-black text-white py-2 w-fit hover:bg-neutral-800 transition-colors duration-300 ease-in-out font-medium capitalize dark:bg-white"
@@ -40,7 +42,7 @@ export default function Page() {
               <source srcSet="/assets/images/cv-preview-small.png" media="(min-width:767px)" />
               <img
                 src="/assets/images/cv-preview.png"
-                className="object-cover w-full h-full block"
+                className="object-cover w-96 lg:w-full lg:h-full block"
                 alt=""
               />
             </picture>

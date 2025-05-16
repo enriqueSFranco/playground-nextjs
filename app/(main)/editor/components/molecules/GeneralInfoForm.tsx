@@ -32,7 +32,7 @@ export function GeneralInfoForm() {
   }
 
   return (
-    <div className="mx-auto flex flex-col space-y-6">
+    <div className="mx-auto flex flex-col space-y-6 w-full h-full">
       <CVSectionHeader
         title="Información general"
         description="Esta sección no aparecerá en tu currículum."

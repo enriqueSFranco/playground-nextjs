@@ -16,7 +16,7 @@ export default function Navbar() {
       <Link href="/">
         <IntelliceCVLogo />
       </Link>
-      <Button color='SECODNARY' className="flex items-center justify-center rounded-full w-8 h-8 lg:w-10 lg:h-10 dark:bg-white dark:text-black" onClick={changeMode}>
+      <Button className="flex items-center justify-center rounded-full w-8 h-8 lg:w-10 lg:h-10 dark:bg-white dark:text-black" onClick={changeMode}>
         {mode === 'light' ? <MoonIcon className="w-5 h-5 flex-shrink-0" /> : <SunIcon className="w-5 h-5 flex-shrink-0" />}
         {/* <label className="text-sm font-normal cursor-pointer">{mode === 'light' ? "oscuro" : "claro"}</label> */}
       </Button>

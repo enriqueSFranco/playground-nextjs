@@ -81,15 +81,13 @@ export default function Page() {
         </p>
       </header>
 
-      <main className="grid grow cols-1 lg:grid-cols-2 overflow-y-auto">
+      <main className="cols-1 grid grow overflow-y-auto lg:grid-cols-2">
         <div className="flex w-full flex-col px-6">
-          <div>
-            <Breadcrumbs
-              breadcrumbs={STEPS}
-              currentStep={currentStep}
-              updateStepInURL={navigateToStep}
-            />
-          </div>
+          <Breadcrumbs
+            breadcrumbs={STEPS}
+            currentStep={currentStep}
+            updateStepInURL={navigateToStep}
+          />
           {CurriculumForm ? (
             <CurriculumForm key={currentStep} />
           ) : (
@@ -99,8 +97,8 @@ export default function Page() {
         <CVPreview />
       </main>
 
-      <footer className="w-full h-20 bg-white flex justify-between dark:bg-black">
-        <div className="flex items-center justify-center space-x-12 w-full">
+      <footer className="flex h-20 w-full justify-between bg-white dark:bg-black">
+        <div className="flex w-full items-center justify-center space-x-12">
           <Button
             color="PRIMARY"
             disabled={!prevStep}
@@ -119,7 +117,7 @@ export default function Page() {
             siguiente
           </Button>
         </div>
-        <div className="flex items-center justify-center gap-10 w-full">
+        <div className="flex w-full items-center justify-center gap-10">
           <Button color="DANGER">cerrar</Button>
         </div>
       </footer>

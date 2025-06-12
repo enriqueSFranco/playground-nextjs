@@ -19,7 +19,7 @@ export const useDimension = ({containerRef}: {containerRef: React.RefObject<HTML
         height: currElem.offsetHeight || 0
       }
     }
-  
+
     // Creamos un ResizeObserver para escuchar cambios de tamaño
     const resizeObserver = new ResizeObserver(entries => {
       let entry = entries[0]

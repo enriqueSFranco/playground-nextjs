@@ -14,11 +14,11 @@ export default function Page() {
         </label>
       </Link>
       <section className="h-full w-full grow mt-4 flex flex-col gap-4">
-        <h2 className="text-md text-left font-light capitalize tracking-wide">
+        <h2 className="text-md text-center lg:text-left font-light capitalize tracking-wide">
           mis curriculumns
         </h2>
         <div className="max-w-xs:m-auto grid w-full">
-          <ol className="grid grid-cols-4 justify-start gap-y-6">
+          <ol className="grid grids-cols-1 justify-center lg:grid-cols-4 lg:justify-start gap-y-6">
             <li>
               <figure
                 role="group"

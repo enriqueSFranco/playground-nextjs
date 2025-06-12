@@ -20,7 +20,7 @@ import { $editorStore } from '../_shared-store/editor';
 export default function Page() {
   const searchParams = useSearchParams();
   const router = useRouter();
-
+  // console.log(searchParams?.show)
   const data = $editorStore.selectors.useCurriculumData();
 
   // State del paso actual sincronizado con la URL
@@ -70,37 +70,37 @@ export default function Page() {
   const CurriculumForm = getStepConfig(currentStep)?.component || null;
 
   return (
-    <div className="flex grow flex-col">
-      <header className="text-balance flex flex-col items-center pb-3 text-sm dark:border-b-[1px] dark:border-b-white/20">
-        <h2 className="text-2xl font-bold">Crea tu currículum fácilmente</h2>
-        <p className="text-sm">
+    <div className="flex min-h-screen flex-col">
+      <header className="flex flex-col items-center space-y-2 pb-6 text-sm dark:border-b-[1px] dark:border-b-white/20">
+        <h2 className="text-3xl text-gray-600 dark:text-gray-300">
+          Crea tu currículum fácilmente
+        </h2>
+        <p className="text-sm text-gray-600 dark:text-gray-400">
           Completa los pasos para crear tu currículum. El progreso se guardará
           automáticamente en cada paso.
         </p>
       </header>
 
-      <main className="relative grow">
-        <div className="absolute bottom-0 top-0 flex w-full">
-          <div className="w-full space-y-6 overflow-y-auto p-3 md:block md:w-1/2">
+      <main className="grid grow cols-1 lg:grid-cols-2 overflow-y-auto">
+        <div className="flex w-full flex-col px-6">
+          <div>
             <Breadcrumbs
               breadcrumbs={STEPS}
               currentStep={currentStep}
               updateStepInURL={navigateToStep}
             />
-
-            {CurriculumForm ? (
-              <CurriculumForm key={currentStep} />
-            ) : (
-              <strong>No hay componente disponible para este paso</strong>
-            )}
           </div>
-          <div className="grow md:border-r md:border-white/20" />
-          <CVPreview />
+          {CurriculumForm ? (
+            <CurriculumForm key={currentStep} />
+          ) : (
+            <strong>No hay componente disponible para este paso</strong>
+          )}
         </div>
+        <CVPreview />
       </main>
 
-      <footer className="flex justify-around p-5">
-        <div className="flex gap-10">
+      <footer className="w-full h-20 bg-white flex justify-between dark:bg-black">
+        <div className="flex items-center justify-center space-x-12 w-full">
           <Button
             color="PRIMARY"
             disabled={!prevStep}
@@ -119,10 +119,12 @@ export default function Page() {
             siguiente
           </Button>
         </div>
-        <Button color="DANGER">cerrar</Button>
+        <div className="flex items-center justify-center gap-10 w-full">
+          <Button color="DANGER">cerrar</Button>
+        </div>
       </footer>
 
-      <Debugguer data={data} />
+      {/* <Debugguer data={data} /> */}
     </div>
   );
 }

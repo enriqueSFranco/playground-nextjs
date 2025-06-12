@@ -12,7 +12,7 @@ export function PersonalInfoHeader({ personalInfo }: PersonalInfoHeaderProps) {
 
   return (
     <header
-      className="w-full border-b-[1px] border-dashed border-neutral-300 bg-white px-4 py-2 transition-shadow duration-300 hover:shadow-sm"
+      className="w-full"
       aria-labelledby="personal-info-header"
     >
       {image && (
@@ -25,32 +25,33 @@ export function PersonalInfoHeader({ personalInfo }: PersonalInfoHeaderProps) {
           />
         </picture>
       )}
-      <div className="flex flex-1 flex-col items-start gap-4">
+      <div className="flex flex-1 flex-col items-start">
         <h2
           aria-label={`Nombre completo: ${fullName}`}
           className="text-3xl font-semibold tracking-tight text-gray-800"
         >
-          {fullName || 'Peter Benjamin Parker'}
+          {fullName ?? "Tu nombre"}
         </h2>
         <h3 className="text-xl font-medium text-gray-600">
-          {job || 'Superheroe'}
+          {job}
         </h3>
         {contactDetailsExist && (
-          <ul className="flex items-center gap-4">
+          <ul className="flex justify-center items-center gap-x-1.5">
             {phone && (
               <li
                 aria-label={`Teléfono: ${phone}`}
                 className="text-sm text-gray-700"
               >
-                <span>{phone}</span>
+                <span>{phone ?? "5612345645"}</span>
               </li>
             )}
+            {email && <span className="text-gray-500">&bull;</span>}
             {email && (
               <li
                 aria-label={`Correo electrónico: ${email}`}
                 className="text-sm text-gray-700"
               >
-                <span>{email}</span>
+                <span>{email ?? "correo01@domain.com"}</span>
               </li>
             )}
           </ul>

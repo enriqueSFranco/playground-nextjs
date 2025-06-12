@@ -41,7 +41,7 @@ export const STEPS: StepsType[] = [
     storeKey: 'professionalProfile'
   },
   {
-    label: 'experiencia laboral',
+    label: 'experiencia',
     component: WorkExperienceForm,
     href: STEP_KEYS.WORK_EXPERIENCE,
     schema: curriculumSchema.shape.workExperience,

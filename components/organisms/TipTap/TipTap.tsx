@@ -42,7 +42,7 @@ export const Tiptap = ({ content, onChange }: Props) => {
   });
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-md outline outline-[1px] outline-white/20">
+    <div className="flex flex-col overflow-hidden rounded-md outline outline-[1px] outline-white/20 z-10">
       <Toolbar editor={editor} />
       <EditorContent editor={editor} />
     </div>

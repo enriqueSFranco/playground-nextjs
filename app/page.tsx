@@ -6,13 +6,13 @@ import Navbar from './(main)/resumes/Navbar';
 export default function Page() {
   // const mode = useThemeStore(state => state.mode)
   return (
-    <div className={`flex min-h-screen flex-col`}>
+    <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto] overflow-hidden">
       <Navbar />
       <main className="grid grow lg:grid-cols-2 bg-white dark:bg-black">
         <section className="flex flex-col items-center justify-center gap-6">
-          <div className="flex flex-col items-center justify-center gap-2">
-            <h1 className="text-3xl lg:max-2xl:text-[2.5em] font-bold">CV fácil y rápido.</h1>
-            <h2 className="text-xl text-center lg:max-2xl:text-[2em] max-xl:w-full">
+          <div className="flex flex-col items-center justify-center gap-6">
+            <h1 className="text-3xl lg:max-2xl:text-[2.5em] font-bold dark:text-white tracking-wide">CV fácil y rápido.</h1>
+            <h2 className="text-xl text-center lg:max-2xl:text-[2em] max-xl:w-full dark:text-white tracking-wide">
               Crea tu CV con{' '}
               <span
                 className="inline-block bg-gradient-to-bl from-green-300 via-blue-500 to-purple-600 bg-clip-text font-bold text-transparent"
@@ -49,7 +49,7 @@ export default function Page() {
           </div>
         </section>
       </main>
-      <footer className="grid h-16 w-full place-content-center dark:bg-black">
+      <footer className="grid h-16 w-full place-content-center dark:bg-black dark:text-white">
         <p className="text-sm dark:bg-black">
           Creado con 💙 por{' '}
           <a

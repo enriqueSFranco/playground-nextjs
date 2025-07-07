@@ -9,7 +9,7 @@ Este proyecto es una aplicación web diseñada para ayudar a los usuarios a crea
 - **Frontend**: 
   - **React**: Librería para la construcción de interfaces de usuario.
   - **Tailwind CSS**: Framework de CSS para crear diseños rápidos y responsivos.
-  - **Zustand**: Librería para el manejo del estado de la aplicación.
+  - **Redux Toolkit**: Librería para el manejo del estado de la aplicación.
   - **Zod**: Herramienta para la validación de datos en el frontend y backend.
   - **TypeScript**: Lenguaje de programación que mejora la seguridad y escalabilidad del código.
 

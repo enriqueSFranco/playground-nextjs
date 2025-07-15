@@ -1,6 +1,8 @@
-import { Inter, Lusitana } from 'next/font/google'
+import { Roboto } from 'next/font/google'
 
-const lusitana = Lusitana({ subsets: ['latin'], weight: ["400", "700"] })
-const inter = Inter({ subsets: ['latin'] })
+const roboto = Roboto({
+  weight: '400',
+  subsets: ['latin'],
+})
 
-export { lusitana, inter }
+export { roboto }

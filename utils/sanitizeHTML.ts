@@ -1,6 +1,6 @@
-import DOMPurify, {Config} from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify'
 
-export const sanitizeHTML = (html?: string, config?: Config) => {
+export const sanitizeHTML = (html?: string) => {
   if (!html) return ""
-  return DOMPurify.sanitize(html, config)
+  return DOMPurify.sanitize(html)
 }

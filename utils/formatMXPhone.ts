@@ -307,7 +307,7 @@ export function formatMexicanPhone(input: string) {
 //     form: T,
 //     newOrder: string[],
 //   ) => {
-//     const set = useCvStore.setState;
+//     const set = store.setState;
 
 //     set((state) => {
 //       const formData = state.cv[form];

@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now()) @map("created_at")
+  resumes   Resume[]
+
+  @@map("users")
+}
+
+model Resume {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  title     String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  User           User?            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  WorkExperience WorkExperience[]
+
+  @@map("resumes")
+}
+
+model PersonalDetails {
+  id String @id @default(uuid())
+}
+
+model ProfileSummary {
+  id String @id @default(uuid())
+}
+
+model EducationHistory {
+  id String @id @default(uuid())
+}
+
+model Skill {
+  id String @id @default(uuid())
+}
+
+model Language {
+  id String @id @default(uuid())
+}
+
+model WorkExperience {
+  id          String   @id @default(uuid())
+  resumeId    String   @map("resume_id")
+  jobTitle    String   @map("job_title")
+  startDate   DateTime @map("start_date") @db.Date
+  endDate     DateTime @map("end_date") @db.Date
+  description String   @map("task_description")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  resume      Resume   @relation(fields: [resumeId], references: [id], onDelete: Cascade)
+
+  @@map("work_experience")
+}

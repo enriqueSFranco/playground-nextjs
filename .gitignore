@@ -39,3 +39,5 @@ package.lock
 yarn.lock
 pnpm.lock
 bun.lockb
+
+/app/generated/prisma

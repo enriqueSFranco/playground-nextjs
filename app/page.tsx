@@ -1,61 +1,52 @@
 import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Navbar from './(main)/resumes/Navbar';
-// import { useThemeStore } from '@/shared-store/theme';
+import Navbar from '../ui/organisms/navbar';
+import { ArrowRight } from 'lucide-react';
 
 export default function Page() {
-  // const mode = useThemeStore(state => state.mode)
   return (
-    <div className="grid min-h-[100dvh] grid-rows-[auto_1fr_auto] overflow-hidden">
+    <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="grid grow lg:grid-cols-2 bg-white dark:bg-black">
-        <section className="flex flex-col items-center justify-center gap-6">
-          <div className="flex flex-col items-center justify-center gap-6">
-            <h1 className="text-3xl lg:max-2xl:text-[2.5em] font-bold dark:text-white tracking-wide">CV fácil y rápido.</h1>
-            <h2 className="text-xl text-center lg:max-2xl:text-[2em] max-xl:w-full dark:text-white tracking-wide">
-              Crea tu CV con{' '}
-              <span
-                className="inline-block bg-gradient-to-bl from-green-300 via-blue-500 to-purple-600 bg-clip-text font-bold text-transparent"
-                style={{
-                  textShadow:
-                    '0 0 45px #3b82f6, 0 0 45px #3b82f6, 0 0 20px #3b82f6',
-                }}
-              >
-                IA
-              </span>
-              {' '}de manera rápida y sencilla.
-            </h2>
-          </div>
+      <main className="relative flex flex-col space-y-10 flex-grow lg:grid lg:grid-cols-12 lg:space-y-0">
+
+        <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+        <section className="col-span-7 place-content-center justify-items-center space-y-8">
+          <h1 className="mx-auto px-4 text-center text-xl font-bold tracking-wide text-black sm:text-2xl md:text-3xl lg:text-5xl">
+            Arma tu CV chido en minutos, con ayuda de la <span className="text-gray-400 text-5xl">IA</span>.
+          </h1>
+
           <Link
             href="/resumes"
-            className="text-md flex items-center justify-between gap-2 rounded-full px-[10px] bg-black text-white py-2 w-fit hover:bg-neutral-800 transition-colors duration-300 ease-in-out font-medium capitalize dark:bg-white"
+            className="flex items-center justify-between gap-2 rounded-full bg-black px-5 py-2.5 transition-colors duration-300 ease-in-out hover:bg-neutral-700"
           >
-            <label className="max-xl:text-md text-sm dark:text-black font-medium cursor-pointer">
-              comenzar
+            <label className="max-xl:text-md cursor-pointer text-sm font-light text-gray-200">
+              Empezar ahora
             </label>{' '}
-            <ArrowRightIcon className="w-5 dark:stroke-black" />
+            <ArrowRight size={22} className="stroke-white" />
           </Link>
         </section>
-        <section className="self-center relative z-10 grid justify-items-center">
-          <div className="max-w-md overflow-hidden p-0 bg-transparent shadow-lg shadow-black/20 rounded-md">
+        <section className="col-span-5 justify-items-center self-center">
+          <div className="max-w-md overflow-hidden rounded-md bg-transparent p-0 shadow-lg border-[1px] border-gray-200">
             <picture>
-              <source srcSet="/assets/images/cv-preview-small.png" media="(min-width:767px)" />
+              <source
+                srcSet="/assets/images/cv-preview-small.png"
+                media="(min-width:767px)"
+              />
               <img
                 src="/assets/images/cv-preview.png"
-                className="object-cover w-96 lg:w-full lg:h-full block"
+                className="block w-96 object-cover lg:h-full lg:w-full"
                 alt=""
               />
             </picture>
           </div>
         </section>
       </main>
-      <footer className="grid h-16 w-full place-content-center dark:bg-black dark:text-white">
-        <p className="text-sm dark:bg-black">
+      <footer className="grid h-16 w-full place-content-center font-light">
+        <p className="text-xs">
           Creado con 💙 por{' '}
           <a
             href="https://github.com/enriqueSFranco"
             target="_blank"
-            className="font-semibold text-blue-500"
+            className="text-xs text-blue-500"
           >
             @enriqueSF
           </a>

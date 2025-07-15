@@ -1,41 +1,54 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react";
 
-type Dimensions = {
-  width: number
-  height: number
-}
-
-export const useDimension = ({containerRef}: {containerRef: React.RefObject<HTMLElement>}) => {
-  const [dimensions, setDimensions] = useState<Dimensions>({width: 0, height: 0})
+export const useDimension = <T extends HTMLElement>({
+  ref,
+}: {
+  ref: React.RefObject<T>;
+}) => {
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const prevDimensions = useRef({ width: 0, height: 0 });
 
   useEffect(() => {
-    const currElem = containerRef.current
+    let resizeObserver: ResizeObserver | null = null;
 
-    if (!currElem) return
-
-    function getDimensions() {
-      return {
-        width: currElem.offsetWidth || 0,
-        height: currElem.offsetHeight || 0
+    const trySetup = () => {
+      const element = ref.current;
+      if (!element) {
+        // ref.current no existe todavía, esperamos al siguiente frame
+        requestAnimationFrame(trySetup);
+        return;
       }
-    }
 
-    // Creamos un ResizeObserver para escuchar cambios de tamaño
-    const resizeObserver = new ResizeObserver(entries => {
-      let entry = entries[0]
-      if (entry) {
-        setDimensions(getDimensions())
-      }
-    })
+      // ref.current ya está listo, creamos ResizeObserver
+      const updateDimensions = () => {
+        if (!element) return;
+        const { offsetWidth, offsetHeight } = element;
+        if (
+          offsetWidth &&
+          offsetHeight &&
+          (offsetWidth !== prevDimensions.current.width ||
+            offsetHeight !== prevDimensions.current.height)
+        ) {
+          prevDimensions.current = { width: offsetWidth, height: offsetHeight };
+          setDimensions({ width: offsetWidth, height: offsetHeight });
+        }
+      };
 
-    resizeObserver.observe(currElem)
-    setDimensions(getDimensions())
+      resizeObserver = new ResizeObserver(() => {
+        // Para no saturar actualizaciones, medimos en el próximo frame
+        requestAnimationFrame(updateDimensions);
+      });
+
+      resizeObserver.observe(element);
+      updateDimensions();
+    };
+
+    trySetup();
 
     return () => {
-      resizeObserver.unobserve(currElem)
-      resizeObserver.disconnect()
-    }
-  }, [containerRef])
+      if (resizeObserver) resizeObserver.disconnect();
+    };
+  }, [ref]);
 
-  return dimensions
-}
+  return dimensions;
+};

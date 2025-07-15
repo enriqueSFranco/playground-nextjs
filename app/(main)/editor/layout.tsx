@@ -1,4 +1,4 @@
-import Navbar from '../resumes/Navbar';
+import Navbar from '../../../ui/organisms/navbar';
 
 interface Props {
   children?: React.ReactNode;
@@ -6,8 +6,8 @@ interface Props {
 
 export default function EditorLayout({ children }: Props) {
   return (
-    <div className="flex min-h-screen flex-col dark:bg-black">
-      <Navbar />
+    <div className="min-h-screen flex flex-col">
+      {/* <Navbar /> */}
       {children}
     </div>
   );

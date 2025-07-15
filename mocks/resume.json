@@ -1,0 +1,181 @@
+{
+  "resumeDetails": {
+    "headline": "Desarrollador Full Stack con experiencia en React y Node.js",
+    "overview": "Apasionado por la tecnología con más de 5 años de experiencia en desarrollo de aplicaciones web escalables y mantenibles."
+  },
+  "personalDetails": {
+    "image": {
+      "name": "foto_perfil.jpg",
+      "previewURL": "https://example.com/foto_perfil.jpg",
+      "size": 204800
+    },
+    "firstName": "Carlos Enrique",
+    "lastName": "Salinas Franco",
+    "job": "Ingeniero de Software",
+    "phone": "+54 9 11 1234-5678",
+    "email": "juan.perez@example.com"
+  },
+  "careerSummary": {
+    "biography": {
+      "type": "doc",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {
+              "type": "text",
+              "text": "Soy "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "Frontend Developer"
+            },
+            {
+              "type": "text",
+              "text": " con conocimientos en "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "JavaScript"
+            },
+            {
+              "type": "text",
+              "text": ", "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "TypeScript"
+            },
+            {
+              "type": "text",
+              "text": " y "
+            },
+            {
+              "type": "text",
+              "marks": [
+                {
+                  "type": "bold"
+                }
+              ],
+              "text": "React"
+            },
+            {
+              "type": "text",
+              "text": ", siempre buscando mejorar la experiencia del usuario. Además, me interesa seguir aprendiendo y explorar nuevas tecnologías, lo que me permite adaptarme a distintos proyectos y aportar soluciones prácticas."
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "skillsSection": {
+    "keySkills": "JavaScript, TypeScript, React, Node.js, Express, PostgreSQL, Git, Docker, REST APIs"
+  },
+  "employmentHistory": [
+    {
+      "id": "emp001",
+      "position": "Desarrollador Full Stack",
+      "company": "Innovatech S.R.L.",
+      "startDate": "2021-03-01",
+      "endDate": "2024-12-31",
+      "description": "Lideré el desarrollo de aplicaciones SPA utilizando React y Node.js, integrando sistemas de autenticación y bases de datos relacionales."
+    },
+    {
+      "id": "emp002",
+      "position": "Desarrollador Frontend",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    },
+    {
+      "id": "emp003",
+      "position": "Desarrollador Frontend3",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    },
+    {
+      "id": "emp004",
+      "position": "Desarrollador Frontend4",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    },
+    {
+      "id": "emp005",
+      "position": "Desarrollador Frontend5",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    },
+    {
+      "id": "emp006",
+      "position": "Desarrollador Frontend6",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    },
+    {
+      "id": "emp007",
+      "position": "Desarrollador Frontend7",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    },
+    {
+      "id": "emp0018",
+      "position": "Desarrollador Frontend18",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    },
+    {
+      "id": "emp009",
+      "position": "Desarrollador Frontend9",
+      "company": "CodeMasters",
+      "startDate": "2019-01-15",
+      "endDate": "2021-02-28",
+      "description": "Desarrollé componentes reutilizables en React y optimicé la experiencia de usuario en diversas plataformas web."
+    }
+  ],
+  "academicBackground": [
+    {
+      "id": "edu001",
+      "position": "Licenciatura en Sistemas de Información",
+      "company": "Universidad Tecnológica Nacional",
+      "startDate": "2014-03-01",
+      "endDate": "2019-12-15",
+      "description": "Formación académica orientada al diseño, desarrollo y análisis de sistemas informáticos."
+    },
+    {
+      "id": "edu002",
+      "position": "Diplomatura en Desarrollo Web",
+      "company": "Platzi",
+      "startDate": "2020-05-01",
+      "endDate": "2020-11-01",
+      "description": "Programa intensivo enfocado en tecnologías web modernas, incluyendo HTML5, CSS3, JavaScript, y frameworks frontend."
+    }
+  ]
+}
